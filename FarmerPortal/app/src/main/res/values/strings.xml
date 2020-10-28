@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FarmerPortal</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">login</string>
+    <string name="not_registered">Not_Registered?</string>
+    <string name="register">REGISTER</string>
+    <string name="confirm_password">Confirm_Password</string>
+    <string name="already_register">Already Register?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="your_mobile_number">YOUR_MOBILE_NUMBER</string>
+    <string name="mobile_number">MOBILE</string>
+</resources>

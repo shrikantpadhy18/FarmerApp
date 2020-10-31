@@ -16,18 +16,26 @@
     android:gravity="center"
     android:textColor="#FF1493"
     android:background="#FFFFFF"
-    android:text="Registration Window"
+    android:text="FARMER PORTAL APP"
     />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/farmer"
+        android:layout_marginTop="70dp"
+
+        />
 
     <EditText
         android:id="@+id/edittext_username"
         android:layout_width="190dp"
         android:layout_height="40dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="20dp"
         android:background="#ffffff"
         android:hint="@string/username"
         android:padding="8dp"
-
+        android:drawableRight="@drawable/username"
         />
 
     <Spinner
@@ -45,8 +53,11 @@
         android:layout_marginTop="20dp"
         android:background="#ffffff"
         android:padding="8dp"
-
-        android:hint="@string/password" />
+        android:inputType="textPassword"
+        android:drawableRight="@drawable/password"
+        android:hint="@string/password"
+        
+        />
     <EditText
         android:id="@+id/phoneno"
         android:background="#ffffff"
@@ -54,17 +65,19 @@
         android:layout_width="190dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:drawableRight="@drawable/phone"
         android:hint="@string/mobile_number"
         />
 
     <EditText
         android:id="@+id/edittext_cnf_password"
         android:layout_width="190dp"
+        android:drawableRight="@drawable/password"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="#ffffff"
         android:padding="8dp"
-
+        android:inputType="textPassword"
         android:hint="@string/confirm_password" />
 
     <Button

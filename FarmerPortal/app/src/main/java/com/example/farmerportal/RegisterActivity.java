@@ -72,11 +72,13 @@ public class RegisterActivity extends AppCompatActivity {
                 String username=mtextusername.getText().toString();
                 String password=mtextpassword.getText().toString();
                 String confirmpassword=mtextCnfPassword.getText().toString();
-                String usertype=drop.toString();
+                String usertype=drop.getSelectedItem().toString();
                 String number=Phone.toString();
                 boolean isInserted=mydb.inserData(username,password,usertype,number);
                 if(isInserted){
                     Toast.makeText(RegisterActivity.this,"SUCCESSFULLY REGISTERED AS "+usertype,Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(RegisterActivity.this," REGISTRATION UNSUCCESSFULL AS "+usertype,Toast.LENGTH_LONG).show();

@@ -2,10 +2,14 @@ package com.example.farmerportal;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.net.PasswordAuthentication;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     static  String name="database.db";
@@ -48,4 +52,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+     public int accessUser(String username,String password,String usertype){
+        SQLiteDatabase  db=this.getWritableDatabase();
+         Cursor res = db.rawQuery("select * from "+Table_Name+" where Username =?",new String[]{username});
+
+
+         int total=res.getCount();
+         return(total);//return the number of rows in the table satifying query
+         //Toast.makeText(, res.getCount(), Toast.LENGTH_SHORT).show();
+    }
 }
+

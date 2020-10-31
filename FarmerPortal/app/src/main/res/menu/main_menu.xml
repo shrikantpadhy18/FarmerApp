@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_id"
+            android:title="Home"
+            android:icon="@drawable/home_icon"
+            />
+
+        <item
+            android:id="@+id/soil_center"
+            android:title="Nearest_Soil_Center"
+            android:icon="@drawable/finder"
+            />
+
+        <item
+            android:id="@+id/dealers"
+            android:title="Nearest_Soil_Center"
+            android:icon="@drawable/contact"
+            />
+        <item
+            android:id="@+id/service_providers"
+            android:title="Contact_Service_provider"
+            android:icon="@drawable/contact"
+            />
+
+
+
+    </group>
+    <group android:checkableBehavior="single">
+
+        <item
+            android:title="My Profile">
+
+            <menu>
+
+                <item
+                    android:id="@+id/user"
+                    android:title="Myself"
+                    android:icon="@drawable/myself"/>
+
+                <item
+                    android:id="@+id/update"
+                    android:title="Update Profile"
+                    android:icon="@drawable/update"/>
+
+                <item
+                    android:id="@+id/logout"
+                    android:title="Logout"
+                    android:icon="@drawable/logout_icon"/>
+            </menu>
+        </item>
+
+
+
+    </group>
+</menu>

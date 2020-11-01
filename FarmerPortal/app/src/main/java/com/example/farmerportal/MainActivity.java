@@ -1,7 +1,5 @@
 package com.example.farmerportal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     EditText mtextusername,mtextpassword;
@@ -60,34 +60,48 @@ public class MainActivity extends AppCompatActivity {
                int count=mydb.accessUser(username,password,usertype);
                //If count is zero so user dont exist;
                if(count==0){
-                   Toast.makeText(MainActivity.this, "SUCH USER DONT EXIST", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(MainActivity.this, "SUCH USER DON'T EXIST", Toast.LENGTH_SHORT).show();
 
 
                }
                else{
                    //After login it checks the type of user based on which it will redirected to activity
 
-                   Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL NOW U WILL BE DIRECTED AS PER USER TYPE", Toast.LENGTH_SHORT).show();
-                   //1)if the user is Farmer
-
-                    if(usertype=="Farmer"){
-                        Intent it=new Intent(MainActivity.this,dashboardfarmer.class);
-                        it.putExtra("username",username);
-                        startActivity(it);
-                    }
 
 
-                   //2)If the user is Dealer
+                   if(username.length()>0) {
 
-                    else if(usertype=="Dealer"){
+                       Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL NOW U WILL BE DIRECTED AS PER USER TYPE", Toast.LENGTH_SHORT).show();
+                       //1)if the user is Farmer
+
+                       if (usertype == "Farmer") {
+                           Intent it = new Intent(MainActivity.this, dashboardfarmer.class);
+                           it.putExtra("username", username);
+                           startActivity(it);
+                       }
+
+                       //2)If the user is Dealer
+
+                       else if (usertype == "Dealer") {
+                           Intent it = new Intent(MainActivity.this, dashboarddealer.class);
+                           it.putExtra("username", username);
+                           startActivity(it);
+
+                       }
+
+
+                       //3)If the user is Consultant
+                       else {
+                           Intent it = new Intent(MainActivity.this, dashboardconsultant.class);
+                           it.putExtra("username", username);
+                           startActivity(it);
+                       }
 
                    }
 
-
-                   //3)If the user is Consultant
-                    else{
-
-                    }
+                   else{
+                       Toast.makeText(MainActivity.this, "Please Enter Valid username", Toast.LENGTH_SHORT).show();
+                   }
                }
            }
        });

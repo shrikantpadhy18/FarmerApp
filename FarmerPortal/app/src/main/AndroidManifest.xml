@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".dashboardconsultant"></activity>
+        <activity android:name=".dashboarddealer" />
         <activity android:name=".dashboardfarmer" />
         <activity android:name=".Dummy" />
         <activity android:name=".RegisterActivity" />

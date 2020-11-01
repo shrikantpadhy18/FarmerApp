@@ -1,7 +1,5 @@
 package com.example.farmerportal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 
@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String usertype=drop.getSelectedItem().toString();
                 String number=Phone.toString();
                 boolean isInserted=mydb.inserData(username,password,usertype,number);
-                if(isInserted){
+                if(isInserted && username.length()>0 && password.length()>0 && password.equals(confirmpassword) && number.length()==10){
                     Toast.makeText(RegisterActivity.this,"SUCCESSFULLY REGISTERED AS "+usertype,Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(intent);

@@ -56,7 +56,7 @@
         android:inputType="textPassword"
         android:drawableRight="@drawable/password"
         android:hint="@string/password"
-        
+
         />
     <EditText
         android:id="@+id/phoneno"

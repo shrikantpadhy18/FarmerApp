@@ -73,9 +73,9 @@ public class RegisterActivity extends AppCompatActivity {
                 String password=mtextpassword.getText().toString();
                 String confirmpassword=mtextCnfPassword.getText().toString();
                 String usertype=drop.getSelectedItem().toString();
-                String number=Phone.toString();
+                String number=Phone.getText().toString();
                 boolean isInserted=mydb.inserData(username,password,usertype,number);
-                if(isInserted && username.length()>0 && password.length()>0 && password.equals(confirmpassword) && number.length()==10){
+                if(isInserted==true && username.length()>0 && password.equals(confirmpassword) &&  password.length()>0 ){
                     Toast.makeText(RegisterActivity.this,"SUCCESSFULLY REGISTERED AS "+usertype,Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(intent);

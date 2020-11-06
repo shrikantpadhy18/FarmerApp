@@ -5,11 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import java.net.PasswordAuthentication;
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     static  String name="database.db";
@@ -27,12 +26,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+Table_Name+"(Username TEXT PRIMARY KEY,Password TEXT,Usertype TEXT,Mobile TEXT)");
+        db.execSQL(" create table "+Table_Name+" ( Username TEXT PRIMARY KEY,Password TEXT,Usertype TEXT,Mobile TEXT )");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+Table_Name);
+        db.execSQL(" DROP TABLE IF EXISTS "+Table_Name);
         onCreate(db);
     }
 
@@ -62,5 +61,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          return(total);//return the number of rows in the table satifying query
          //Toast.makeText(, res.getCount(), Toast.LENGTH_SHORT).show();
     }
+
+    //Get Phone Number
+    public String accessPhone(String username){
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor res=db.rawQuery("select * from "+Table_Name+" where Username=?",new String[]{username});
+        String mobile=res.getString(res.getColumnIndex("Mobile"));
+        return (mobile);
+
+    }
+
+
+    public ArrayList<String> getDealers(){
+        ArrayList<String>aj=new ArrayList<String>();
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor result=db.rawQuery("select * from "+Table_Name+" where Usertype=?",new String[]{"Dealer"});
+        result.moveToFirst();
+        while (!result.isAfterLast()){
+        aj.add(result.getString(result.getColumnIndex("Username")));
+        aj.add(result.getString(result.getColumnIndex("Mobile")));
+        aj.add(result.getString(result.getColumnIndex("Usertype")));
+        result.moveToNext();
+        }
+        return(aj);
+    }
+
 }
 

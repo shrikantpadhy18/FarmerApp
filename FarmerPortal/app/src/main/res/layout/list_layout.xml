@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Dealer/Conultant List"
-                    android:textColor="#FF0000"
+                    android:textColor="#F11D1D"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:id="@+id/userdealer"

@@ -16,8 +16,6 @@ import java.util.List;
 //viewholder
 public class dealeradapter extends  RecyclerView.Adapter<dealeradapter.dealerviewholder> {
 
-
-
     private Context mtx;
     private List<Dealerstats>dealerlist;
 
@@ -56,8 +54,6 @@ public class dealeradapter extends  RecyclerView.Adapter<dealeradapter.dealervie
             username=itemView.findViewById(R.id.username);
             usertype=itemView.findViewById(R.id.usertype);
             phone=itemView.findViewById(R.id.mobile);
-
         }
     }
-
 }

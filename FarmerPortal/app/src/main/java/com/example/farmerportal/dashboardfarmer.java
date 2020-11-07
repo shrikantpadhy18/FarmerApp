@@ -14,7 +14,7 @@ public class dashboardfarmer extends AppCompatActivity {
     TextView USER;
 
 
-    Button btn,btndealer;
+    Button btn,btndealer,btnconsultant;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboardfarmer);
@@ -45,6 +45,15 @@ public class dashboardfarmer extends AppCompatActivity {
         });
 
 
+        //
+        btnconsultant=findViewById(R.id.buttonconsultant);
+        btnconsultant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it=new Intent(dashboardfarmer.this,searchconsultant.class);
+                startActivity(it);
+            }
+        });
 
 
         //Define Hooks

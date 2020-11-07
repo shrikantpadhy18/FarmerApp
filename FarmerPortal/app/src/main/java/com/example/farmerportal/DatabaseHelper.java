@@ -87,5 +87,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return(aj);
     }
 
+
+    //access
+        public  ArrayList <String> getConsultant(){
+        ArrayList<String>aj=new ArrayList<String>();
+        SQLiteDatabase db=this.getWritableDatabase();
+            Cursor result=db.rawQuery("select * from "+Table_Name+" where Usertype=?",new String[]{"Consultant"});
+
+            result.moveToFirst();
+            while (!result.isAfterLast()){
+                aj.add(result.getString(result.getColumnIndex("Username")));
+                aj.add(result.getString(result.getColumnIndex("Usertype")));
+                aj.add(result.getString(result.getColumnIndex("Mobile")));
+
+                result.moveToNext();
+
+            }
+            return(aj);
+
+        }
 }
 

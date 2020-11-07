@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(" create table "+Table_Name+" ( Username TEXT PRIMARY KEY,Password TEXT,Usertype TEXT,Mobile TEXT )");
+        db.execSQL(" create table "+Table_Name+" ( Username TEXT PRIMARY KEY,Password TEXT,Usertype TEXT,Mobile TEXT,image BLOB )");
     }
 
     @Override
@@ -79,8 +79,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         result.moveToFirst();
         while (!result.isAfterLast()){
         aj.add(result.getString(result.getColumnIndex("Username")));
+            aj.add(result.getString(result.getColumnIndex("Usertype")));
         aj.add(result.getString(result.getColumnIndex("Mobile")));
-        aj.add(result.getString(result.getColumnIndex("Usertype")));
+
         result.moveToNext();
         }
         return(aj);

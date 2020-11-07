@@ -1,111 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/tools"
     tools:context=".searchdealer"
-    app:cardCornerRadius="8dp"
-    android:elevation="8dp"
+
+    android:layout_gravity="center"
+
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp"
         >
 
-        <androidx.cardview.widget.CardView
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Dealers List"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:id="@+id/userdealer"
-                />
+            android:hint="@string/app_name"
+            android:textColor="#808000"/>
 
-        </androidx.cardview.widget.CardView>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            >
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="UserType"
-
-                />
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="UserType"
-                android:id="@+id/usertype"
-                />
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            >
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Phone"
-
-
-                />
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Phone"
-                android:id="@+id/mobile"
-                android:drawableRight="@drawable/contact"
-                />
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            >
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Username"
-
-
-                />
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Username"
-                android:id="@+id/username"
-                android:drawableRight="@drawable/myself"
-
-                />
-
-
-        </LinearLayout>
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/farmer"
+            android:layout_marginTop="70dp"/>
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerview"
+        android:background="@color/design_default_color_primary"
+
+        />
 
 
 
-</androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

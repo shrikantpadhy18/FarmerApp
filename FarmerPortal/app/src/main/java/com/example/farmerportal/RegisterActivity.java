@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,20 +14,25 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-
-
-
 public class RegisterActivity extends AppCompatActivity {
     EditText mtextusername,mtextpassword;
-    Button mbuttonregister;
+    Button mbuttonregister,profilebtn;
     TextView mTextviewlogin;
     EditText mtextCnfPassword;
     EditText Phone;
     Spinner drop;
 
+
+    //image view
+    ImageView imageView;
+
+
     //database part
 
     DatabaseHelper mydb;
+
+
+    final  int REQUEST_CODE_GALLERY=999; //FOR IMAGE
     //Types of user
     private static final String[]user={"Farmer","Dealer","Consultant"};
 
@@ -61,9 +67,20 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+
     mydb=new DatabaseHelper(this);
     Adddata();
     }
+
+
+
     public  void  Adddata(){
         mbuttonregister.setOnClickListener(new View.OnClickListener() {
             @Override

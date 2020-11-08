@@ -14,13 +14,15 @@ public class dashboardfarmer extends AppCompatActivity {
     TextView USER;
 
 
-    Button btn,btndealer,btnconsultant;
+    Button btn,btndealer,btnconsultant,btnfinder;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboardfarmer);
         final String user=getIntent().getStringExtra("username");
         USER=(TextView)findViewById(R.id.placeuser);
         USER.setText(user);
+
+        btnfinder=findViewById(R.id.buttonfinder);
         btn=(Button)findViewById(R.id.buttonprofile);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +32,14 @@ public class dashboardfarmer extends AppCompatActivity {
 
                 Intent it=new Intent(dashboardfarmer.this,farmerprofile.class);
                 it.putExtra("user",user);
+                startActivity(it);
+            }
+        });
+
+        btnfinder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it=new Intent(dashboardfarmer.this,googlemap.class);
                 startActivity(it);
             }
         });

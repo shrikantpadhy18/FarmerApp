@@ -36,7 +36,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dealer/Conultant List"
+                    android:text="Dealer/Conultant/Farmer List"
                     android:textColor="#F11D1D"
                     android:textAlignment="center"
                     android:textSize="20sp"

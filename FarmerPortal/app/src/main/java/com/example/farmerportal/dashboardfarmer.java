@@ -14,15 +14,26 @@ public class dashboardfarmer extends AppCompatActivity {
     TextView USER;
 
 
-    Button btn,btndealer,btnconsultant,btnfinder;
+    Button btn,btndealer,btnconsultant,btnfinder,logout;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboardfarmer);
-        final String user=getIntent().getStringExtra("username");
+
         USER=(TextView)findViewById(R.id.placeuser);
-        USER.setText(user);
 
         btnfinder=findViewById(R.id.buttonfinder);
+
+        btnfinder.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent it =new Intent(dashboardfarmer.this,GoogleAPI.class);
+                startActivity(it);
+            }
+        });
+        final String user=getIntent().getStringExtra("username");
+        USER.setText(user);
+
         btn=(Button)findViewById(R.id.buttonprofile);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,10 +47,11 @@ public class dashboardfarmer extends AppCompatActivity {
             }
         });
 
-        btnfinder.setOnClickListener(new View.OnClickListener() {
+        logout=findViewById(R.id.buttonlogout);
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it=new Intent(dashboardfarmer.this,googlemap.class);
+                Intent it =new Intent(dashboardfarmer.this,RegisterActivity.class);
                 startActivity(it);
             }
         });
@@ -50,6 +62,7 @@ public class dashboardfarmer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it =new Intent(dashboardfarmer.this,searchdealer.class);
+                it.putExtra("user",user);
                 startActivity(it);
             }
         });
@@ -61,6 +74,7 @@ public class dashboardfarmer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it=new Intent(dashboardfarmer.this,searchconsultant.class);
+                it.putExtra("user",user);
                 startActivity(it);
             }
         });

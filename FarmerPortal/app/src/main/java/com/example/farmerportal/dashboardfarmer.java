@@ -22,15 +22,14 @@ public class dashboardfarmer extends AppCompatActivity {
         USER=(TextView)findViewById(R.id.placeuser);
 
         btnfinder=findViewById(R.id.buttonfinder);
-
-        btnfinder.setOnClickListener(new View.OnClickListener(){
-
+        btnfinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it =new Intent(dashboardfarmer.this,GoogleAPI.class);
+                Intent it=new Intent(dashboardfarmer.this,googlemap.class);
                 startActivity(it);
             }
         });
+
         final String user=getIntent().getStringExtra("username");
         USER.setText(user);
 

@@ -51,9 +51,9 @@
 
                 <ImageView
                     android:layout_width="150dp"
-                    android:layout_height="100dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/farmer"
-                    android:layout_marginTop="70dp"
+                    android:layout_marginTop="30dp"
 
                     />
 
@@ -74,6 +74,8 @@
                     android:layout_height="40dp"
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown"/>
+
+                <include layout="@layout/content_image"/>
 
                 <Button
                     android:layout_width="wrap_content"

@@ -40,5 +40,4 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.13.0'
 
 
-
 }

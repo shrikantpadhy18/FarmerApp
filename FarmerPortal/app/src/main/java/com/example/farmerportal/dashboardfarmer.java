@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,13 +14,30 @@ public class dashboardfarmer extends AppCompatActivity {
 // Variables
     TextView USER;
 
-
+    ImageView source;
+    Button btnpolicy;
+    DatabaseHelper mydb;
     Button btn,btndealer,btnconsultant,btnfinder,logout;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboardfarmer);
 
+
+
         USER=(TextView)findViewById(R.id.placeuser);
+
+        btnpolicy=findViewById(R.id.button_policy);
+
+        btnpolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //pass
+                Intent it=new Intent(dashboardfarmer.this,policy.class);
+                startActivity(it);
+            }
+        });
+
+
 
         btnfinder=findViewById(R.id.buttonfinder);
         btnfinder.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +49,7 @@ public class dashboardfarmer extends AppCompatActivity {
         });
 
         final String user=getIntent().getStringExtra("username");
+
         USER.setText(user);
 
         btn=(Button)findViewById(R.id.buttonprofile);

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import androidx.annotation.Nullable;
 
@@ -19,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public  static  final String Col_3="Usertype";
     public  static  final String Col_4="Mobile";
 
+    public  static  final  String Col_5="image";
     public DatabaseHelper(@Nullable Context context) {
         super(context, name, null, version);
         //it will create database and table
@@ -36,13 +39,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //method to insert data inside database
-    public  boolean inserData(String Username,String Password,String Usertype,String Mobile){
+    public  boolean inserData(String Username, String Password, String Usertype, String Mobile,byte[] image){
         SQLiteDatabase  db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(COL_1,Username);
         contentValues.put(COL_2,Password);
         contentValues.put(Col_3,Usertype);
         contentValues.put(Col_4,Mobile);
+        //contentValues.put(Col_5,new String(image));
         long result=db.insert(Table_Name,null,contentValues);
         if(result==-1){
             return false;
@@ -106,6 +110,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return(aj);
 
         }
+
+
+        public Bitmap getImage(String user){
+        SQLiteDatabase db=this.getWritableDatabase();
+        Bitmap bt=null;
+        Cursor cursor= db.rawQuery("select * from "+Table_Name+" where Username=?",new String[]{user});
+            byte [] imag=cursor.getBlob(cursor.getColumnIndex("image"));
+            bt= BitmapFactory.decodeByteArray(imag,0,imag.length);
+
+            return(bt);
+        }
+
 
         public ArrayList<String> getFarmers(){
         ArrayList<String> aj=new ArrayList<String>();

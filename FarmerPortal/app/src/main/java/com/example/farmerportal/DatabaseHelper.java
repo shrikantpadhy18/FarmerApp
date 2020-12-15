@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //method to insert data inside database
-    public  boolean inserData(String Username, String Password, String Usertype, String Mobile,byte[] image){
+    public  boolean inserData(String Username, String Password, String Usertype, String Mobile){
         SQLiteDatabase  db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(COL_1,Username);

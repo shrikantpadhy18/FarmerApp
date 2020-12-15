@@ -1,15 +1,15 @@
 package com.example.farmerportal;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,12 +18,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -35,8 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
     Spinner drop;
     ImageView ivImage;
     Integer REQUEST_CAMERA=1,SELECT_FILE=0;
-
-
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+    public  Uri selectedImageUri;
     //image view
 
 
@@ -62,6 +70,12 @@ public class RegisterActivity extends AppCompatActivity {
         drop=findViewById(R.id.spinner);
         ivImage=findViewById(R.id.ivimage);
         profile=findViewById(R.id.profile);
+
+        storage=FirebaseStorage.getInstance();
+        storageReference=storage.getReference();
+
+
+
         profile.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -133,23 +147,81 @@ public class RegisterActivity extends AppCompatActivity {
             final Bitmap bmp=(Bitmap)bundle.get("data");
             ivImage.setImageBitmap(bmp);
 
+                // camera code
+
+
+                String username=mtextusername.getText().toString();
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                ByteArrayOutputStream stream =new ByteArrayOutputStream();
+                bmp.compress(Bitmap.CompressFormat.JPEG,100,stream);
+
+                    StorageReference  imageRef=storageReference.child("images/"+username);
+                    byte [] b=stream.toByteArray();
+                    imageRef.putBytes(b).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                            Toast.makeText(RegisterActivity.this, "Pic Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                            Toast.makeText(RegisterActivity.this,"Uploading Failed",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                //
             }
             else  if(requestCode==SELECT_FILE){
 
 
-                try{
-                    Uri selectedImageUri;
-                    selectedImageUri = data.getData();
-                    InputStream inputStream=getContentResolver().openInputStream(selectedImageUri);
-                    Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
-                    ivImage.setImageBitmap(bitmap);
 
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+
+                    selectedImageUri = data.getData();
+                    ivImage.setImageURI(selectedImageUri);
+                    uploadPhoto();
+                    //InputStream inputStream=getContentResolver().openInputStream(selectedImageUri);
+                    //Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
+                    //ivImage.setImageBitmap(bitmap);
+
+
 
             }
         }
+    }
+    private void uploadPhoto(){
+        final ProgressDialog pd=new ProgressDialog(this);
+        pd.setTitle("Uploading image....");
+        pd.show();
+        String username=mtextusername.getText().toString();
+        StorageReference riversRef = storageReference.child("images/"+username);
+
+        riversRef.putFile(selectedImageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // Get a URL to the uploaded content
+                        pd.dismiss();
+                        Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                        // ...
+                        pd.dismiss();
+                        Toast.makeText(getApplicationContext(),"fail to upload",Toast.LENGTH_LONG).show();
+                    }
+                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>(){
+
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                double progressParent=(100.00*taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                pd.setMessage("Progres.: "+(int)progressParent+"");
+            }
+        });
     }
 
 
@@ -165,8 +237,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String usertype=drop.getSelectedItem().toString();
 
                 String number=Phone.getText().toString();
-                boolean isInserted=mydb.inserData(username,password,usertype,number,imageViewToByte(ivImage));
+                boolean isInserted=mydb.inserData(username,password,usertype,number);
                 if(isInserted==true && username.length()>0 && password.equals(confirmpassword) &&  password.length()>0 ){
+
+
+
                     Toast.makeText(RegisterActivity.this,"SUCCESSFULLY REGISTERED AS "+usertype,Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(intent);
@@ -179,13 +254,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private byte[] imageViewToByte(ImageView image){
-        Bitmap bitmap =((BitmapDrawable)image.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-        byte [] byteArray=stream.toByteArray();
-        return byteArray;
-    }
+
 
 
 }

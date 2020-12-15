@@ -141,7 +141,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Nearest_Soil_Centre"
+                                    android:text="DISCOVER ROUTES"
                                     android:textSize="16sp"
                                     android:layout_below="@+id/image2"
                                     android:layout_centerHorizontal="true"
@@ -237,7 +237,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Contact_Irrigation_Centre"
+                                    android:text="CONTACT IRRIGATION CENTRE"
                                     android:textSize="16sp"
                                     android:layout_below="@+id/image4"
                                     android:layout_centerHorizontal="true"
@@ -332,7 +332,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Schemes"
+                                    android:text="SCHEMES"
                                     android:textSize="16sp"
                                     android:layout_below="@+id/scheme"
                                     android:layout_centerHorizontal="true"

@@ -89,18 +89,17 @@
 
 
                                 <ImageView
-                                    android:id="@+id/image1"
-                                    android:layout_width="50dp"
-                                    android:layout_height="50dp"
+                                    android:id="@+id/source"
+                                    android:layout_width="120dp"
+                                    android:layout_height="80dp"
                                     android:layout_centerInParent="true"
                                     android:layout_marginTop="12dp"
                                     android:src="@drawable/username" />
-
                                 <TextView
                                     android:id="@+id/section"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@+id/image1"
+                                    android:layout_below="@+id/source"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="10dp"
@@ -114,20 +113,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/section"
                                     android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="3dp"
                                     android:layout_marginBottom="10dp"
                                     android:text="Username"
                                     android:textSize="16sp" />
 
-                                <TextView
-                                    android:id="@+id/phone"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/username"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:textSize="16sp" />
+
 
 
                             </RelativeLayout>

@@ -142,8 +142,8 @@ public class googlemap extends AppCompatActivity  implements OnMapReadyCallback,
         destinationPosition=Point.fromLngLat(point.getLongitude(),point.getLatitude());
         originPosition=Point.fromLngLat(originLocation.getLongitude(),originLocation.getLatitude());
         getRoute(originPosition,destinationPosition);
-        startButton.setEnabled(true);
-        startButton.setBackgroundResource(R.color.mapboxBlue);
+
+
 
     }
 

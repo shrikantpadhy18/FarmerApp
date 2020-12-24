@@ -1,6 +1,6 @@
 <h1><b>ABOUT THIS APP<b></h1>
 <br>
-its an android application made with the intention to bring farmer,dealers and consultant in one single platform where farmer can contact with the dealers to sell their crops in maximum profit.Farmer can contact with irrigation consultant officer to repair or install irrigation system in their farm with affordable price.farmer can find the shortest route to reach the soil centre.
+its an android application made with the intention to bring farmer,dealers and consultant in one single platform where farmer can contact with the dealers to sell their crops in maximum profit.Farmer can contact with irrigation consultant officer to repair or install irrigation system in their farm with affordable price.it also gives farmer their current location and farmer can find the shortest route to reach the soil centre.
 <br>
 <hr>
 

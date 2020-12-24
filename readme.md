@@ -14,18 +14,18 @@ we have used map box api
 <hr>
 <h1><b>Screenshots</b></h1>
 
-<img src="./screenshots/register.jpg">
+<img width="500" height="600" src="./screenshots/register.jpg">
 <br>
-<img src="./screenshots/login.jpg">
+<img width="500" height="600" src="./screenshots/login.jpg">
 <br>
-<img src="./screenshots/farmerprofile.jpg">
+<img width="500" height="600" src="./screenshots/farmerprofile.jpg">
 <br>
-<img src="./screenshots/geolocation.jpg">
+<img width="500" height="600" src="./screenshots/geolocation.jpg">
 <br>
-<img src="./screenshots/farmerdashboard.jpg">
+<img width="500" height="600" src="./screenshots/farmerdashboard.jpg">
 <br>
-<img src="./screenshots/consultantboard.jpg">
+<img width="500" height="600" src="./screenshots/consultantboard.jpg">
 <br>
-<img src="./screenshots/schemes.jpg">
+<img width="500" height="600" src="./screenshots/schemes.jpg">
 <br>
-<img src="./screenshots/dealerboard.jpg">
+<img width="500" height="600" src="./screenshots/dealerboard.jpg">

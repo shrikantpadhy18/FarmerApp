@@ -9,15 +9,17 @@ used android studio
 <br>
 <hr>
 <h1><b>STORAGE/DATABASE<b><h1>
+<br>
 Firebase and SQLite
 <br>
 <hr>
 <h1><b>API<b></h1>
+<br>
 we have used map box api
 <br>
 <hr>
 <h1><b>Screenshots</b></h1>
-
+<br>
 <img width="500" height="600" src="./screenshots/register.jpg">
 <br>
 <img width="500" height="600" src="./screenshots/login.jpg">

@@ -8,9 +8,9 @@ its an android application made with the intention to bring farmer,dealers and c
 used android studio
 <br>
 <hr>
-<h1><b>STORAGE/DATABASE<b><h1>
+<h1><b>STORAGE/DATABASE<b></h1>
 <br>
-Firebase and SQLite
+firebase and SQLite
 <br>
 <hr>
 <h1><b>API<b></h1>

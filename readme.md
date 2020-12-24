@@ -8,6 +8,10 @@ its an android application made with the intention to bring farmer,dealers and c
 used android studio
 <br>
 <hr>
+<h1><b>STORAGE/DATABASE<b><h1>
+Firebase and SQLite
+<br>
+<hr>
 <h1><b>API<b></h1>
 we have used map box api
 <br>

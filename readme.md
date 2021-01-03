@@ -21,7 +21,7 @@ we have used map box api
 <hr>
 <h1>Video Demonstration</h1>
 <video  width="320" height="240" controls>
-  <source src="./video.mp4" type="video/mp4">
+  <source src="video.mp4" type="video/mp4">
   
 </video>
 

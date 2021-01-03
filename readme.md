@@ -19,6 +19,14 @@ we have used map box api
 <br> Register your self to get the api <a href="https://www.mapbox.com/maps">CLICK</a>
 <br>
 <hr>
+<h1>Video Demonstration</h1>
+<video controls autoplay>
+  <source src="./video.mp4" type="video/mp4">
+  
+</video>
+
+<br>
+<hr>
 <h1><b>Screenshots</b></h1>
 <br>
 <img width="500" height="600" src="./screenshots/register.jpg">
@@ -37,3 +45,5 @@ we have used map box api
 <img width="500" height="600" src="./screenshots/schemes.jpg">
 <br>
 <img width="500" height="600" src="./screenshots/dealerboard.jpg">
+
+<br>

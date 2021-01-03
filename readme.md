@@ -20,7 +20,7 @@ we have used map box api
 <br>
 <hr>
 <h1>Video Demonstration</h1>
-<video controls autoplay>
+<video  width="320" height="240" controls>
   <source src="./video.mp4" type="video/mp4">
   
 </video>

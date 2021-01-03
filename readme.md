@@ -1,3 +1,6 @@
+<!DOCTYPE html> 
+<html>
+
 <h1><b>ABOUT THIS APP<b></h1>
 <br>
 its an android application made with the intention to bring farmer,dealers and consultant in one single platform where farmer can contact with the dealers to sell their crops in maximum profit.Farmer can contact with irrigation consultant officer to repair or install irrigation system in their farm with affordable price.it also gives farmer their current location and farmer can find the shortest route to reach the soil centre.
@@ -21,7 +24,7 @@ we have used map box api
 <hr>
 <h1>Video Demonstration</h1>
 <video  width="320" height="240" controls>
-  <source src="video.mp4" type="video/mp4">
+  <source src="./video.mp4" type="video/mp4">
   
 </video>
 
@@ -47,3 +50,4 @@ we have used map box api
 <img width="500" height="600" src="./screenshots/dealerboard.jpg">
 
 <br>
+</html>
